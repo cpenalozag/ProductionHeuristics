@@ -113,18 +113,15 @@ class Navbar extends Component {
                         <div className="content">
                             <Switch>
                                 <Route exact path="/"
-                                       render={() => <Dashboard/>}/>
+                                       render={(props) => <Dashboard {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
                                 <Route exact path="/demanda"
-                                       render={() => <Demand/>}/>
+                                       render={(props) => <Demand {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
                                 <Route exact path="/ss"
-                                       render={() => <SecurityStock/>}/>
+                                       render={(props) => <SecurityStock {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
                                 <Route exact path="/leadtimes"
-                                       render={() => <LeadTimes/>}/>
+                                       render={(props) => <LeadTimes {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
                                 <Route exact path="/costos"
-                                       render={() => <Costs/>}/>
-
-                                {/*<Route exact path="/budget"*/}
-                                {/*render={(props) => <Budget {...props} budget={this.props.budget}/>}/>*/}
+                                       render={(props) => <Costs {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
                             </Switch>
                         </div>
                         <Footer/>

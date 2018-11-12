@@ -6,8 +6,22 @@ class LeadTimes extends Component {
         this.state = {};
     }
 
+    renderLeadTimes() {
+        return this.props.materials.map((material) => {
+            return (
+                <tr key={material._id}>
+                    <td>{material.nombre}</td>
+                    <td><input className="form-control text-center" ref={`lt,${material.nombre}`} min="0" required=""
+                               type="number" defaultValue={material.leadtime}/></td>
+                </tr>
+            )
+        });
+    }
+
     render() {
-        this.getParams()
+        {
+            this.renderLeadTimes()
+        }
         return (
             <div className="container-fluid">
                 <div className="card">
@@ -16,32 +30,22 @@ class LeadTimes extends Component {
                             <h4 className="card-title">Lead Times</h4>
                         </div>
                         <div className="card-body ">
-                            <table className="table table-bordered">
-                                <tbody className="">
-                                <tr>
-                                    <th></th>
-                                    <th colSpan="6" scope="colgroup">Mes</th>
-                                </tr>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>1</th>
-                                    <th>2</th>
-                                    <th>3</th>
-                                    <th>4</th>
-                                    <th>5</th>
-                                    <th>6</th>
-                                </tr>
-                                <tr>
-                                    <td>Compota de frutas</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                <form action="">
+                                        <table className="table table-bordered">
+                                            <tbody className="">
+                                            <tr>
+                                                <th>Nombre del insumo</th>
+                                                <th>Lead Time (meses)</th>
+                                            </tr>
+                                            {this.renderLeadTimes()}
+                                            </tbody>
+                                        </table>
+                                    <div className="row">
+                                        <div className="col-md-2 mx-auto">
+                                            <input className="btn btn-primary" type="submit" value="Guardar"/>
+                                        </div>
+                                    </div>
+                                </form>
                         </div>
                     </div>
                 </div>
