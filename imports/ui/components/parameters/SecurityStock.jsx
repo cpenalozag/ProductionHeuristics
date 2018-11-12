@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 
-class Demand extends Component {
-    types = ['Estéticas','Cardiacas','Respiratorias','Ortopédicas','Neurológicas','Pediátricas']
-
+class SecurityStock extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -14,7 +12,7 @@ class Demand extends Component {
                 <div className="card">
                     <div className="content">
                         <div className="card-header ">
-                            <h4 className="card-title">Demanda mensual próximos 6 meses</h4>
+                            <h4 className="card-title">Stock de Seguridad </h4>
                         </div>
                         <div className="card-body ">
                             <table className="table table-bordered">
@@ -33,13 +31,13 @@ class Demand extends Component {
                                     <th>6</th>
                                 </tr>
                                 <tr>
-                                    <td>Estéticas</td>
-                                    <td>300</td>
-                                    <td>300</td>
-                                    <td>300</td>
-                                    <td>300</td>
-                                    <td>300</td>
-                                    <td>300</td>
+                                    <td>Compota de frutas</td>
+                                    <td>10%</td>
+                                    <td>10%</td>
+                                    <td>10%</td>
+                                    <td>10%</td>
+                                    <td>10%</td>
+                                    <td>10%</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -51,4 +49,4 @@ class Demand extends Component {
     }
 }
 
-export default Demand;
+export default SecurityStock;

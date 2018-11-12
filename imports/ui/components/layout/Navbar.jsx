@@ -4,6 +4,9 @@ import {BrowserRouter as Router, Switch, Route, NavLink} from 'react-router-dom'
 import Dashboard from "../dashboard/Dashboard";
 import Footer from "./Footer";
 import Demand from "../parameters/Demand";
+import SecurityStock from "../parameters/SecurityStock";
+import LeadTimes from "../parameters/LeadTimes";
+import Costs from "../parameters/Costs";
 
 
 class Navbar extends Component {
@@ -33,9 +36,27 @@ class Navbar extends Component {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink activeClassName="active-link" exact className="nav-link" to="/demand">
+                                    <NavLink activeClassName="active-link" exact className="nav-link" to="/demanda">
                                         <i className="fas fa-chart-line"></i>
-                                        <p>Demanda</p>
+                                        <p>Demanda Cirugías</p>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink activeClassName="active-link" exact className="nav-link" to="/ss">
+                                        <i className="fas fa-warehouse"></i>
+                                        <p>Stock de Seguridad</p>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink activeClassName="active-link" exact className="nav-link" to="/leadtimes">
+                                        <i className="far fa-clock"></i>
+                                        <p>Lead Times</p>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink activeClassName="active-link" exact className="nav-link" to="/costos">
+                                        <i className="fas fa-dollar-sign"></i>
+                                        <p>Costos</p>
                                     </NavLink>
                                 </li>
                             </ul>
@@ -58,13 +79,31 @@ class Navbar extends Component {
                                         <li className="nav-item active">
                                             <NavLink activeClassName="active-link" exact className="nav-link"
                                                      to="/">
-                                                <p>Dashboard</p>
+                                                <p>Programación</p>
                                             </NavLink>
                                         </li>
                                         <li className="nav-item active">
                                             <NavLink activeClassName="active-link" exact className="nav-link"
-                                                     to="/demand">
-                                                <p>Demanda</p>
+                                                     to="/demanda">
+                                                <p>Demanda Cirugías</p>
+                                            </NavLink>
+                                        </li>
+                                        <li className="nav-item active">
+                                            <NavLink activeClassName="active-link" exact className="nav-link"
+                                                     to="/ss">
+                                                <p>Stock de Seguridad</p>
+                                            </NavLink>
+                                        </li>
+                                        <li className="nav-item active">
+                                            <NavLink activeClassName="active-link" exact className="nav-link"
+                                                     to="/leadtimes">
+                                                <p>Lead Times</p>
+                                            </NavLink>
+                                        </li>
+                                        <li className="nav-item active">
+                                            <NavLink activeClassName="active-link" exact className="nav-link"
+                                                     to="/costos">
+                                                <p>Costos</p>
                                             </NavLink>
                                         </li>
                                     </ul>
@@ -75,8 +114,14 @@ class Navbar extends Component {
                             <Switch>
                                 <Route exact path="/"
                                        render={() => <Dashboard/>}/>
-                                <Route exact path="/demand"
+                                <Route exact path="/demanda"
                                        render={() => <Demand/>}/>
+                                <Route exact path="/ss"
+                                       render={() => <SecurityStock/>}/>
+                                <Route exact path="/leadtimes"
+                                       render={() => <LeadTimes/>}/>
+                                <Route exact path="/costos"
+                                       render={() => <Costs/>}/>
 
                                 {/*<Route exact path="/budget"*/}
                                 {/*render={(props) => <Budget {...props} budget={this.props.budget}/>}/>*/}
