@@ -538,7 +538,7 @@ body > .navbar-collapse.has-image:after {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-    padding: 6px 4px;
+    padding: 2px 2px;
     vertical-align: middle;
 }
 
@@ -711,7 +711,8 @@ body > .navbar-collapse.has-image:after {
 }
 
 .form-control {
-    padding: 2px 2px;
+    padding: 1px 1px;
+    border: 0px;
 }
 
 .btn {
@@ -1326,13 +1327,6 @@ Copyright (c) 2015 Daniel Eden
     position: absolute;
 }
 
-.card .table tbody td:first-child,
-.card .table thead th:first-child {
-    padding-left: 15px;
-}
-
-
-
 .card .alert {
     border-radius: 4px;
     position: relative;
@@ -1474,10 +1468,6 @@ Copyright (c) 2015 Daniel Eden
     position: absolute;
 }
 
-.card .table tbody td:first-child,
-.card .table thead th:first-child {
-    padding-left: 15px;
-}
 table {
     font-size: 15px !important;
 }

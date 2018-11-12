@@ -62,6 +62,10 @@ class Costs extends Component {
                                     <tbody className="">
                                     <tr>
                                         <th></th>
+                                        <th colSpan="9" scope="colgroup">Mes</th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
                                         <th colSpan="3" scope="colgroup">1</th>
                                         <th colSpan="3" scope="colgroup">2</th>
                                         <th colSpan="3" scope="colgroup">3</th>
@@ -83,6 +87,10 @@ class Costs extends Component {
                                 </table>
                                 <table className="table table-bordered">
                                     <tbody className="">
+                                    <tr>
+                                        <th></th>
+                                        <th colSpan="9" scope="colgroup">Mes</th>
+                                    </tr>
                                     <tr>
                                         <th></th>
                                         <th colSpan="3" scope="colgroup">4</th>
