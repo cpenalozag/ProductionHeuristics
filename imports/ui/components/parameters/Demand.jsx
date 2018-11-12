@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 
 class Demand extends Component {
-    types = ['Estéticas','Cardiacas','Respiratorias','Ortopédicas','Neurológicas','Pediátricas']
 
     constructor(props) {
         super(props);
@@ -19,7 +18,7 @@ class Demand extends Component {
                         <div className="card-body ">
                             <table className="table table-bordered">
                                 <tbody className="">
-                                <tr>
+                                <tr>t
                                     <th></th>
                                     <th colSpan="6" scope="colgroup">Mes</th>
                                 </tr>

@@ -7,6 +7,7 @@ class LeadTimes extends Component {
     }
 
     render() {
+        this.getParams()
         return (
             <div className="container-fluid">
                 <div className="card">
@@ -32,12 +33,12 @@ class LeadTimes extends Component {
                                 </tr>
                                 <tr>
                                     <td>Compota de frutas</td>
-                                    <td>10%</td>
-                                    <td>10%</td>
-                                    <td>10%</td>
-                                    <td>10%</td>
-                                    <td>10%</td>
-                                    <td>10%</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
                                 </tr>
                                 </tbody>
                             </table>
