@@ -12,18 +12,22 @@ class App extends Component {
 
     render() {
         return (
-            <Navbar demand={this.props.demand} materials={this.props.materials} recipes={this.props.recipes}/>
+            <Navbar demand={this.props.demand} materials={this.props.materials} recipes={this.props.recipes} dataReady={this.props.dataReady}/>
         );
     }
 }
 
 export default withTracker(() => {
-    Meteor.subscribe("Demand");
-    Meteor.subscribe("Materials");
-    Meteor.subscribe("Recipes");
+    let ready = [
+        Meteor.subscribe("Demand").ready(),
+        Meteor.subscribe("Materials").ready(),
+        Meteor.subscribe("Recipes").ready()
+    ]
+
     return {
         demand: Demand.find({}).fetch(),
         materials: Materials.find({}).fetch(),
-        recipes: Recipes.find({}).fetch()
+        recipes: Recipes.find({}).fetch(),
+        dataReady: ready
     };
 })(App);

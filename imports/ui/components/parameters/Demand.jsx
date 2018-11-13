@@ -70,7 +70,7 @@ class Demand extends Component {
                                     <th>5</th>
                                     <th>6</th>
                                 </tr>
-                                {this.renderDemand()}
+                                {this.props.demand[0]?this.renderDemand():<tr></tr>}
                                 </tbody>
                             </table>
                         </div>

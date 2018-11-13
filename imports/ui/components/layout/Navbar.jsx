@@ -16,6 +16,18 @@ class Navbar extends Component {
         super(props);
     }
 
+    componentDidUpdate() {
+        if (this.props.dataReady[0]&&this.props.dataReady[1]&&this.props.dataReady[2]){
+            console.log("Datos listos")
+            if (!this.props.materials[0]){
+                Meteor.call("demand.initialInsert")
+                Meteor.call("recipes.initialInsert")
+                Meteor.call("materials.initialInsert")
+                return "no hay datos"
+            }
+        }
+    }
+
 
     render() {
         return (
