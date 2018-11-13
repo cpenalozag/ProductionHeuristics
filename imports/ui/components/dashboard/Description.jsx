@@ -82,9 +82,11 @@ class Description extends Component {
                             pestañas a mano izquierda. Una vez ingresados se debe escoger la heurística que se quiere seguir.
                             Finalmente, se escoge el insumo para el cual se quiere conocer la forma en que se deben realizar los pedidos.</p>
                     </div>
+                    <hr/>
                     <div className="card-header ">
                         <h4 className="card-title">Escoge la heurística:</h4>
                     </div>
+                    <br/>
                     <div className="row">
                         <div className="col-md-2 mx-auto">
                             <input className="btn btn-primary" type="submit" value="PPB" onClick={this.handlePPB} />
@@ -104,7 +106,7 @@ class Description extends Component {
                             <div className="col-md-2 mx-auto">
                                 <form>
                                     <label>
-                                        <select onChange={this.onChangeDropdown}>
+                                        <select className="form-control" onChange={this.onChangeDropdown}>
                                             {
                                                 this.renderDropdownItems()
                                             }
@@ -114,28 +116,29 @@ class Description extends Component {
                             </div>
                         </div>
                     </div>
-                    <br />
-                    <br />
+                    <div className="card-header ">
+                        <h4 className="card-title">Resultados:</h4>
+                    </div>
                     <div className="card-body ">
                         <form>
                             <table className="table table-bordered">
                                 <tbody className="">
                                     <tr>
                                         <th>Política</th>
-                                        <th colSpan="6" scope="colgroup">{this.state.politica}</th>
+                                        <th colSpan="7" scope="colgroup">{this.state.politica}</th>
                                     </tr>
                                     <tr>
                                         <th>Insumo</th>
-                                        <th colSpan="6" scope="colgroup">{this.state.insumo}</th>
+                                        <th colSpan="7" scope="colgroup">{this.state.insumo}</th>
                                     </tr>
                                     <tr>
                                         <th>Se pide para</th>
                                         <th>Periodo para los que se pide</th>
                                         <th>Cantidad a pedir</th>
                                         <th>Periodo en el que la orden llega</th>
-                                        <th>C. de ordenar</th>
-                                        <th>C. de adquirir</th>
-                                        <th>C. de mantener</th>
+                                        <th>C. ordenar</th>
+                                        <th>C. adquirir</th>
+                                        <th>C. mantener</th>
                                         <th>C. Total</th>
                                     </tr>
                                     {

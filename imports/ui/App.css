@@ -712,7 +712,12 @@ body > .navbar-collapse.has-image:after {
 
 .form-control {
     padding: 1px 1px;
+}
+
+table .form-control {
+    padding: 1px 1px;
     border: 0px;
+    color: #10203d;
 }
 
 .btn {
@@ -1229,7 +1234,7 @@ Copyright (c) 2015 Daniel Eden
     border-radius: 6px;
     box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
     background-color: #FFFFFF;
-    color: #252422;
+    color: #10203d;
     margin-bottom: 20px;
     position: relative;
     z-index: 1;
@@ -1398,7 +1403,7 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .card-category {
-    color: #0c172c;
+    color: #08101f;
 }
 
 .card .card-category,

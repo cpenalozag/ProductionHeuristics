@@ -33,7 +33,7 @@ class Demand extends Component {
                         <div className="card-body ">
                             <form action="">
                                 <table className="table table-bordered">
-                                    <tbody className="">
+                                    <tbody>
                                     <tr>
                                         <th></th>
                                         <th colSpan="6" scope="colgroup">Mes</th>
