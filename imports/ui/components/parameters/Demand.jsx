@@ -52,7 +52,7 @@ class Demand extends Component {
                 <div className="card">
                     <div className="content">
                         <div className="card-header ">
-                            <h4 className="card-title">Demanda mensual próximos 6 meses</h4>
+                            <h4 className="card-title">Demanda por tipo de cirugía para los próximos 6 meses</h4>
                         </div>
                         <div className="card-body ">
                             <table className="table table-bordered">
