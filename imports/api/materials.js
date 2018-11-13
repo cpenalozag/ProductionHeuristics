@@ -12,7 +12,26 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-    "Materials.initialInsert"() {
+    "materials.updateCost"(type,material,period,value) {
+        const res = Materials.findOne({nombre:material});
+        let costs = res.costos;
+        costs[type][period]=value;
+        Materials.update(res._id, {
+            $set: { costos:costs},});
+    },
+    "materials.updateLT"(material,value) {
+        const res = Materials.findOne({nombre:material});
+        Materials.update(res._id, {
+            $set: { leadtime:value},});
+    },
+    "materials.updateSS" (material, period, value){
+        const res = Materials.findOne({nombre:material});
+        let ss = res.ss;
+        ss[period]=value;
+        Materials.update(res._id, {
+            $set: { ss:ss},});
+    },
+    "materials.initialInsert"() {
         Inventory.insert([
             {
                 "nombre": "Sopa",
