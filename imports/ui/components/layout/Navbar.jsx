@@ -7,14 +7,13 @@ import Demand from "../parameters/Demand";
 import SecurityStock from "../parameters/SecurityStock";
 import LeadTimes from "../parameters/LeadTimes";
 import Costs from "../parameters/Costs";
+import Recipes from "../parameters/Recipes";
 
 
 class Navbar extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-        }
     }
 
 
@@ -39,6 +38,12 @@ class Navbar extends Component {
                                     <NavLink activeClassName="active-link" exact className="nav-link" to="/demanda">
                                         <i className="fas fa-chart-line"></i>
                                         <p>Demanda Cirugías</p>
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink activeClassName="active-link" exact className="nav-link" to="/recetas">
+                                        <i className="fas fa-utensils"></i>
+                                        <p>Recetas</p>
                                     </NavLink>
                                 </li>
                                 <li>
@@ -90,6 +95,12 @@ class Navbar extends Component {
                                         </li>
                                         <li className="nav-item active">
                                             <NavLink activeClassName="active-link" exact className="nav-link"
+                                                     to="/recetas">
+                                                <p>Recetas</p>
+                                            </NavLink>
+                                        </li>
+                                        <li className="nav-item active">
+                                            <NavLink activeClassName="active-link" exact className="nav-link"
                                                      to="/ss">
                                                 <p>Stock de Seguridad</p>
                                             </NavLink>
@@ -115,13 +126,15 @@ class Navbar extends Component {
                                 <Route exact path="/"
                                        render={(props) => <Dashboard {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
                                 <Route exact path="/demanda"
-                                       render={(props) => <Demand {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
+                                       render={(props) => <Demand {...props} demand={this.props.demand}/>}/>
+                                <Route exact path="/recetas"
+                                       render={(props) => <Recipes {...props} recipes={this.props.recipes}/>}/>
                                 <Route exact path="/ss"
-                                       render={(props) => <SecurityStock {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
+                                       render={(props) => <SecurityStock {...props} materials={this.props.materials}/>}/>
                                 <Route exact path="/leadtimes"
-                                       render={(props) => <LeadTimes {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
+                                       render={(props) => <LeadTimes {...props} materials={this.props.materials}/>}/>
                                 <Route exact path="/costos"
-                                       render={(props) => <Costs {...props} demand={this.props.demand} materials={this.props.materials}/>}/>
+                                       render={(props) => <Costs {...props} materials={this.props.materials}/>}/>
                             </Switch>
                         </div>
                         <Footer/>
