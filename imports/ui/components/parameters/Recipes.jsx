@@ -87,6 +87,24 @@ class Recipes extends Component {
                 <div className="card">
                     <div className="content">
                         <div className="card-header ">
+                            <h4 className="card-title">Número de platos requeridos por dieta</h4>
+                        </div>
+                        <div className="card-body ">
+                            <table className="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th>Receta</th>
+                                    <th>Número de platos requeridos</th>
+                                </tr>
+                                {this.renderRecipeQuantities()}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div className="card">
+                    <div className="content">
+                        <div className="card-header ">
                             <h4 className="card-title">Insumos requeridos por receta</h4>
                         </div>
                         <div className="card-body ">
@@ -106,24 +124,6 @@ class Recipes extends Component {
                                     <th>{this.props.recipes[5] ? this.props.recipes[5].nombre : ""}</th>
                                 </tr>
                                 {this.props.recipes[0] ? this.renderRecipes() : <tr></tr>}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div className="card">
-                    <div className="content">
-                        <div className="card-header ">
-                            <h4 className="card-title">Número de platos requeridos por dieta</h4>
-                        </div>
-                        <div className="card-body ">
-                            <table className="table table-bordered">
-                                <tbody>
-                                <tr>
-                                    <th>Receta</th>
-                                    <th>Número de platos requeridos</th>
-                                </tr>
-                                {this.renderRecipeQuantities()}
                                 </tbody>
                             </table>
                         </div>
