@@ -52,6 +52,16 @@ class Description extends Component {
 
     ppb() {
         //<td><input className="form-control text-center" min="0" required="" type="number" defaultValue={d.demanda.primero} /></td>
+
+        let demandas = [],
+            ss = [],
+            costosAdquirir = [],
+            costosMantener = [],
+            costosPedir = [],
+            resultado = [],
+            periodosActules = [];
+
+        let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
     }
 
     mcu() {
@@ -59,6 +69,47 @@ class Description extends Component {
     }
 
     sm() {
+
+    }
+
+    calcularRequerimientosNetos(demandas, ss){
+        let requerimientosNetos = 0;
+
+        for(let i = 0; i< demandas.length; i++){
+            if(i===0){
+                requerimientosNetos = requerimientosNetos + demandas[i] + ss[i];
+            }
+            else { 
+                requerimientosNetos = requerimientosNetos + demandas[i] + ss[i] - ss[i-1];
+            }
+        }
+
+        return requerimientosNetos;
+    }
+
+    calcularCostoAdquirir(requerimientosNetos, costoAdquirir){
+        let costo = 0;
+
+        requerimientosNetos.map((d) => {
+            costo = costo + d * costoAdquirir;
+        })
+
+        return costo;
+    }
+
+    calcularCostoMantener(requerimientosNetos, ss, costoMantener){
+
+        let costo = 0;
+
+        for( let i=0; i<requerimientosNetos.length; i++) {
+            let sumaRequerimientos = 0;
+            for(let j=i+1;i<requerimientosNetos.length; j++){
+                sumaRequerimientos = sumaRequerimientos + requerimientosNetos[j];
+            }
+            costo = costo + (sumaRequerimientos + ss[i])*costoMantener[i];
+        }
+
+        return costo;
 
     }
     renderDropdownItems() {
