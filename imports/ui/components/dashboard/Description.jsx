@@ -53,15 +53,27 @@ class Description extends Component {
     ppb() {
         //<td><input className="form-control text-center" min="0" required="" type="number" defaultValue={d.demanda.primero} /></td>
 
-        let demandas = [],
-            ss = [],
-            costosAdquirir = [],
-            costosMantener = [],
-            costosPedir = [],
+        let demandas = [100, 100, 100, 100, 100, 100],
+            ss = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+            costosAdquirir = [8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+            costosMantener = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+            costosPedir = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+            leadTime = 0,
             resultado = [],
-            periodosActules = [];
+            periodosActuales = [],
+            cantidadMaximaDeLeadTime = 3,
+            numPeridos = 6;
 
         let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
+
+        let i = 0;
+        while (i < numPeridos) {
+            periodosActuales.push(i);
+            //Costos
+            let costoAdquirir = this.calcularCostoAdquirir(requerimientosNetos, costoAdquirir[Math.abs(i-leadTime)]);
+            let costoMantener = this.calcularCostoMantener(requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
+            let costoTotal = costoAdquirir + costoMantener + costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
+        }
     }
 
     mcu() {
@@ -72,22 +84,24 @@ class Description extends Component {
 
     }
 
-    calcularRequerimientosNetos(demandas, ss){
+    //Demandas y ss son arreglos con los datos de los meses que me importan.
+    calcularRequerimientosNetos(demandas, ss) {
         let requerimientosNetos = 0;
 
-        for(let i = 0; i< demandas.length; i++){
-            if(i===0){
-                requerimientosNetos = requerimientosNetos + demandas[i] + ss[i];
+        for (let i = 0; i < demandas.length; i++) {
+            if (i === 0) {
+                requerimientosNetos = requerimientosNetos + demandas[i] + Math.ceil(ss[i] * demandas[i]);
             }
-            else { 
-                requerimientosNetos = requerimientosNetos + demandas[i] + ss[i] - ss[i-1];
+            else {
+                requerimientosNetos = requerimientosNetos + demandas[i] + Math.ceil(ss[i] * demandas[i]) - Math.ceil(ss[i - 1] * demandas[i - 1]);
             }
         }
 
         return requerimientosNetos;
     }
 
-    calcularCostoAdquirir(requerimientosNetos, costoAdquirir){
+    //Requerimientos tiene que ser un Array y costoAdquirir tiene que ser un número.
+    calcularCostoAdquirir(requerimientosNetos, costoAdquirir) {
         let costo = 0;
 
         requerimientosNetos.map((d) => {
@@ -97,16 +111,18 @@ class Description extends Component {
         return costo;
     }
 
-    calcularCostoMantener(requerimientosNetos, ss, costoMantener){
+    //Requerimientos,ss,y costoMantener tienen que ser un Array y leadTime tiene que ser un número.
+    //Solamente se pasa en requerimientos netos los periodos que quiero hacer
+    calcularCostoMantener(requerimientosNetos, ss, costoMantener, leadTime, periodosActuales) {
 
         let costo = 0;
 
-        for( let i=0; i<requerimientosNetos.length; i++) {
+        for (let i = periodosActuales[0]; i < periodosActuales[periodosActuales.length-1]; i++) {
             let sumaRequerimientos = 0;
-            for(let j=i+1;i<requerimientosNetos.length; j++){
-                sumaRequerimientos = sumaRequerimientos + requerimientosNetos[j];
+            for (let j = i + 1; i < requerimientosNetos.length; j++) {
+                sumaRequerimientos = sumaRequerimientos + requerimientosNetos[j + leadTime];
             }
-            costo = costo + (sumaRequerimientos + ss[i])*costoMantener[i];
+            costo = costo + (sumaRequerimientos + ss[i + leadTime]) * costoMantener[i];
         }
 
         return costo;
@@ -133,11 +149,11 @@ class Description extends Component {
                             pestañas a mano izquierda. Una vez ingresados se debe escoger la heurística que se quiere seguir.
                             Finalmente, se escoge el insumo para el cual se quiere conocer la forma en que se deben realizar los pedidos.</p>
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="card-header ">
                         <h4 className="card-title">Escoge la heurística:</h4>
                     </div>
-                    <br/>
+                    <br />
                     <div className="row">
                         <div className="col-md-2 mx-auto">
                             <input className="btn btn-primary" type="submit" value="PPB" onClick={this.handlePPB} />
@@ -197,11 +213,6 @@ class Description extends Component {
                                     }
                                 </tbody>
                             </table>
-                            <div className="row">
-                                <div className="col-md-2 mx-auto">
-                                    <input className="btn btn-primary" type="submit" value="Guardar" />
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
