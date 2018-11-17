@@ -47,6 +47,9 @@ const data = [{
     "nombre": "Sopa",
     "costos": {
         "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -55,6 +58,9 @@ const data = [{
             "sexto": "0"
         },
         "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -63,6 +69,9 @@ const data = [{
             "sexto": "0"
         },
         "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -80,36 +89,13 @@ const data = [{
         "sexto": "0"
     },
     "leadtime": "0"
-},
-    {
-        "nombre": "Arroz",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+}, {
+    "nombre": "Arroz",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -117,75 +103,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Carne",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Agua",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Carne",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -193,75 +149,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Yogurt griego",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Gelatina",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Agua",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -269,75 +195,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Tomate",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Salmón",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Yogurt griego",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -345,75 +241,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Verduras",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Manzana",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Gelatina",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -421,75 +287,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Brócoli",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Huevo",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Tomate",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -497,75 +333,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Aguacate",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Frutos secos",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Salmón",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -573,75 +379,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Pasta",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Cereal",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Verduras",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -649,75 +425,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Leche",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
-            "primero": "0",
-            "segundo": "0",
-            "tercero": "0",
-            "cuarto": "0",
-            "quinto": "0",
-            "sexto": "0"
-        },
-        "leadtime": "0"
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
     },
-    {
-        "nombre": "Pollo",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "leadtime": "0"
+}, {
+    "nombre": "Manzana",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -725,37 +471,45 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
     },
-    {
-        "nombre": "Compota de frutas",
-        "costos": {
-            "adquirir": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "mantener": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            },
-            "ordenar": {
-                "primero": "0",
-                "segundo": "0",
-                "tercero": "0",
-                "cuarto": "0",
-                "quinto": "0",
-                "sexto": "0"
-            }
-        },
-        "ss": {
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Brócoli",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
             "primero": "0",
             "segundo": "0",
             "tercero": "0",
@@ -763,5 +517,405 @@ const data = [{
             "quinto": "0",
             "sexto": "0"
         },
-        "leadtime": "0"
-    }]
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Huevo",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Aguacate",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Frutos secos",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Pasta",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Cereal",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Leche",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Pollo",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}, {
+    "nombre": "Compota de frutas",
+    "costos": {
+        "adquirir": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "mantener": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        },
+        "ordenar": {
+            "menos2": "0",
+            "menos1": "0",
+            "cero": "0",
+            "primero": "0",
+            "segundo": "0",
+            "tercero": "0",
+            "cuarto": "0",
+            "quinto": "0",
+            "sexto": "0"
+        }
+    },
+    "ss": {
+        "primero": "0",
+        "segundo": "0",
+        "tercero": "0",
+        "cuarto": "0",
+        "quinto": "0",
+        "sexto": "0"
+    },
+    "leadtime": "0"
+}
+]

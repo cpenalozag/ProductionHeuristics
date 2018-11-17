@@ -711,6 +711,7 @@ body > .navbar-collapse.has-image:after {
 }
 
 .form-control {
+    text-align: center;
     padding: 1px 1px;
 }
 
