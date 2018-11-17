@@ -18,6 +18,45 @@ class Costs extends Component {
         Meteor.call("materials.updateCost", type, material, period, value)
     }
 
+    renderCostsLeadTime() {
+        return this.props.materials.map((material) => {
+            return (
+                <tr key={material._id}>
+                    <td>{material.nombre}</td>
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`ordenar,${material.nombre},menos2`} min="0" required="" type="number"
+                               defaultValue={material.costos.ordenar.menos2}/></td>
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`adquirir,${material.nombre},menos2`} min="0" required="" type="number"
+                               defaultValue={material.costos.adquirir.menos2}/></td>
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`mantener,${material.nombre},menos2`} min="0" required="" type="number"
+                               defaultValue={material.costos.mantener.menos2}/></td>
+
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`ordenar,${material.nombre},menos1`} min="0" required="" type="number"
+                               defaultValue={material.costos.ordenar.menos1}/></td>
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`adquirir,${material.nombre},menos1`} min="0" required="" type="number"
+                               defaultValue={material.costos.adquirir.menos1}/></td>
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`mantener,${material.nombre},menos1`} min="0" required="" type="number"
+                               defaultValue={material.costos.mantener.menos1}/></td>
+
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`ordenar,${material.nombre},cero`} min="0" required="" type="number"
+                               defaultValue={material.costos.ordenar.cero}/></td>
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`adquirir,${material.nombre},cero`} min="0" required="" type="number"
+                               defaultValue={material.costos.adquirir.cero}/></td>
+                    <td><input className="form-control text-center" onChange={this.handleInputChange}
+                               name={`mantener,${material.nombre},cero`} min="0" required="" type="number"
+                               defaultValue={material.costos.mantener.cero}/></td>
+                </tr>
+            )
+        });
+    }
+
     renderCostsFirst() {
         return this.props.materials.map((material) => {
             return (
@@ -105,6 +144,33 @@ class Costs extends Component {
                             <h4 className="card-title">Estructura de costos</h4>
                         </div>
                         <div className="card-body ">
+                            <table className="table table-bordered">
+                                <tbody className="">
+                                <tr>
+                                    <th></th>
+                                    <th colSpan="9" scope="colgroup">Mes</th>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <th colSpan="3" scope="colgroup">-2</th>
+                                    <th colSpan="3" scope="colgroup">-1</th>
+                                    <th colSpan="3" scope="colgroup">0</th>
+                                </tr>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Ordenar</th>
+                                    <th>Adquirir</th>
+                                    <th>Mantener</th>
+                                    <th>Ordenar</th>
+                                    <th>Adquirir</th>
+                                    <th>Mantener</th>
+                                    <th>Ordenar</th>
+                                    <th>Adquirir</th>
+                                    <th>Mantener</th>
+                                </tr>
+                                {this.renderCostsLeadTime()}
+                                </tbody>
+                            </table>
                             <table className="table table-bordered">
                                 <tbody className="">
                                 <tr>
