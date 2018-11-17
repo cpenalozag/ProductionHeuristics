@@ -70,7 +70,7 @@ class Description extends Component {
         while (i < numPeridos) {
             periodosActuales.push(i);
             //Costos
-            let costoAdquirir = this.calcularCostoAdquirir(requerimientosNetos, costoAdquirir[Math.abs(i-leadTime)]);
+            let costoAdquirir = this.calcularCostoAdquirir(requerimientosNetos, costoAdquirir[Math.abs(i - leadTime)]);
             let costoMantener = this.calcularCostoMantener(requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
             let costoTotal = costoAdquirir + costoMantener + costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
         }
@@ -117,7 +117,7 @@ class Description extends Component {
 
         let costo = 0;
 
-        for (let i = periodosActuales[0]; i < periodosActuales[periodosActuales.length-1]; i++) {
+        for (let i = periodosActuales[0]; i < periodosActuales[periodosActuales.length - 1]; i++) {
             let sumaRequerimientos = 0;
             for (let j = i + 1; i < requerimientosNetos.length; j++) {
                 sumaRequerimientos = sumaRequerimientos + requerimientosNetos[j + leadTime];
