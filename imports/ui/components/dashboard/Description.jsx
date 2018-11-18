@@ -34,17 +34,11 @@ class Description extends Component {
 
     renderResults() {
         if (this.state.politica === "MCU") {
-            return (
-                this.mcu()
-            )
-        }
-        else if (this.state.politica === "PPB") {
-            let resultado = this.ppb();
-            console.log(resultado)
+            let resultado = this.mcu();
 
-            return resultado.map((resp) => {
+            return resultado.map((resp, i) => {
                 return (
-                    <tr key={resp.split("$")[0]}>
+                    <tr key={i}>
                         <td>{resp.split("$")[0]}</td>
                         <td>{resp.split("$")[1]}</td>
                         <td>{resp.split("$")[2]}</td>
@@ -55,13 +49,43 @@ class Description extends Component {
                         <td>{resp.split("$")[7]}</td>
                     </tr>
                 )
-            }
-            )
+            });
+        }
+        else if (this.state.politica === "PPB") {
+            let resultado = this.ppb();
+
+            return resultado.map((resp, i) => {
+                return (
+                    <tr key={i}>
+                        <td>{resp.split("$")[0]}</td>
+                        <td>{resp.split("$")[1]}</td>
+                        <td>{resp.split("$")[2]}</td>
+                        <td>{resp.split("$")[3]}</td>
+                        <td>{resp.split("$")[4]}</td>
+                        <td>{resp.split("$")[5]}</td>
+                        <td>{resp.split("$")[6]}</td>
+                        <td>{resp.split("$")[7]}</td>
+                    </tr>
+                )
+            });
         }
         else if (this.state.politica === "SM") {
-            return (
-                this.sm()
-            )
+            let resultado = this.sm();
+
+            return resultado.map((resp, i) => {
+                return (
+                    <tr key={i}>
+                        <td>{resp.split("$")[0]}</td>
+                        <td>{resp.split("$")[1]}</td>
+                        <td>{resp.split("$")[2]}</td>
+                        <td>{resp.split("$")[3]}</td>
+                        <td>{resp.split("$")[4]}</td>
+                        <td>{resp.split("$")[5]}</td>
+                        <td>{resp.split("$")[6]}</td>
+                        <td>{resp.split("$")[7]}</td>
+                    </tr>
+                )
+            });
         }
     }
 
@@ -82,6 +106,7 @@ class Description extends Component {
 
         let i = 0;
         while (i < numPeriodos) {
+
             periodosActuales.push(i);
 
             let cantidadAPedir = this.calcularCantidadAPedir(requerimientosNetos, periodosActuales);
@@ -92,10 +117,21 @@ class Description extends Component {
             let costoTotal = costoAdquirir + costoMantener + costoPedir;
 
             let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
-                "$" + cantidadAPedir + "$" +  (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
+                "$" + cantidadAPedir + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
                 + "$" + costoMantener + "$" + costoTotal;
 
             resultado.push(resultadoAAnadir);
+
+            if (periodosActuales.length > 1) {
+                let resultadoAnterior = resultado[resultado.length - 2];
+                let costoPedirPeriodoAnterior = resultadoAnterior.split("$")[4];
+                let costoMantenerPeriodoAnterior = resultadoAnterior.split("$")[6];
+                if (Math.abs(costoPedir - costoMantener) > Math.abs(costoPedirPeriodoAnterior - costoMantenerPeriodoAnterior)) {
+                    periodosActuales = [];
+                    i--;
+                }
+            }
+
             i++;
         }
 
@@ -104,9 +140,100 @@ class Description extends Component {
 
     mcu() {
 
+        let demandas = [100, 100, 100, 100, 100, 100],
+            ss = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+            costosAdquirir = [8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+            costosMantener = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+            costosPedir = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+            leadTime = 0,
+            resultado = [],
+            periodosActuales = [],
+            cantidadMaximaDeLeadTime = 3,
+            numPeriodos = 6;
+
+        let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
+
+        let i = 0;
+        while (i < numPeriodos) {
+
+            periodosActuales.push(i);
+
+            let cantidadAPedir = this.calcularCantidadAPedir(requerimientosNetos, periodosActuales);
+            //Costos
+            let costoAdquirir = this.calcularCostoAdquirir(cantidadAPedir, costosAdquirir[Math.abs(i - leadTime)]);
+            let costoMantener = this.calcularCostoMantener(demandas, requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
+            let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
+            let costoTotal = costoAdquirir + costoMantener + costoPedir;
+
+            let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
+                "$" + cantidadAPedir + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
+                + "$" + costoMantener + "$" + costoTotal;
+
+            resultado.push(resultadoAAnadir);
+
+            if (periodosActuales.length > 1) {
+                let resultadoAnterior = resultado[resultado.length - 2];
+                let cantidadAPedirPeriodoAnterior = resultadoAnterior.split("$")[2];
+                let costoTotalPeriodoAnterior  = resultadoAnterior.split("$")[7];
+                if (costoTotal/cantidadAPedir > costoTotalPeriodoAnterior/cantidadAPedirPeriodoAnterior) {
+                    periodosActuales = [];
+                    i--;
+                }
+            }
+
+            i++;
+        }
+
+        return resultado;
+
     }
 
     sm() {
+
+        let demandas = [100, 100, 100, 100, 100, 100],
+            ss = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
+            costosAdquirir = [8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
+            costosMantener = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+            costosPedir = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+            leadTime = 0,
+            resultado = [],
+            periodosActuales = [],
+            cantidadMaximaDeLeadTime = 3,
+            numPeriodos = 6;
+
+        let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
+
+        let i = 0;
+        while (i < numPeriodos) {
+
+            periodosActuales.push(i);
+
+            let cantidadAPedir = this.calcularCantidadAPedir(requerimientosNetos, periodosActuales);
+            //Costos
+            let costoAdquirir = this.calcularCostoAdquirir(cantidadAPedir, costosAdquirir[Math.abs(i - leadTime)]);
+            let costoMantener = this.calcularCostoMantener(demandas, requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
+            let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
+            let costoTotal = costoAdquirir + costoMantener + costoPedir;
+
+            let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
+                "$" + cantidadAPedir + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
+                + "$" + costoMantener + "$" + costoTotal;
+
+            resultado.push(resultadoAAnadir);
+
+            if (periodosActuales.length > 1) {
+                let resultadoAnterior = resultado[resultado.length - 2];
+                let costoTotalPeriodoAnterior  = resultadoAnterior.split("$")[7];
+                if (costoTotal/(periodosActuales.length-1) > costoTotalPeriodoAnterior/(periodosActuales.length-2) ){
+                    periodosActuales = [];
+                    i--;
+                }
+            }
+
+            i++;
+        }
+
+        return resultado;
 
     }
 
