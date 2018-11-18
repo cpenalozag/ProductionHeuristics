@@ -39,8 +39,23 @@ class Description extends Component {
             )
         }
         else if (this.state.politica === "PPB") {
-            return (
-                this.ppb()
+            let resultado = this.ppb();
+            console.log(resultado)
+
+            return resultado.map((resp) => {
+                return (
+                    <tr key={resp.split("$")[0]}>
+                        <td>{resp.split("$")[0]}</td>
+                        <td>{resp.split("$")[1]}</td>
+                        <td>{resp.split("$")[2]}</td>
+                        <td>{resp.split("$")[3]}</td>
+                        <td>{resp.split("$")[4]}</td>
+                        <td>{resp.split("$")[5]}</td>
+                        <td>{resp.split("$")[6]}</td>
+                        <td>{resp.split("$")[7]}</td>
+                    </tr>
+                )
+            }
             )
         }
         else if (this.state.politica === "SM") {
@@ -51,7 +66,6 @@ class Description extends Component {
     }
 
     ppb() {
-        //<td><input className="form-control text-center" min="0" required="" type="number" defaultValue={d.demanda.primero} /></td>
 
         let demandas = [100, 100, 100, 100, 100, 100],
             ss = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
@@ -62,18 +76,30 @@ class Description extends Component {
             resultado = [],
             periodosActuales = [],
             cantidadMaximaDeLeadTime = 3,
-            numPeridos = 6;
+            numPeriodos = 6;
 
         let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
 
         let i = 0;
-        while (i < numPeridos) {
+        while (i < numPeriodos) {
             periodosActuales.push(i);
+
+            let cantidadAPedir = this.calcularCantidadAPedir(requerimientosNetos, periodosActuales);
             //Costos
-            let costoAdquirir = this.calcularCostoAdquirir(requerimientosNetos, costoAdquirir[Math.abs(i - leadTime)]);
-            let costoMantener = this.calcularCostoMantener(requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
-            let costoTotal = costoAdquirir + costoMantener + costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
+            let costoAdquirir = this.calcularCostoAdquirir(cantidadAPedir, costosAdquirir[Math.abs(i - leadTime)]);
+            let costoMantener = this.calcularCostoMantener(demandas, requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
+            let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
+            let costoTotal = costoAdquirir + costoMantener + costoPedir;
+
+            let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
+                "$" + cantidadAPedir + "$" +  (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
+                + "$" + costoMantener + "$" + costoTotal;
+
+            resultado.push(resultadoAAnadir);
+            i++;
         }
+
+        return resultado;
     }
 
     mcu() {
@@ -86,14 +112,14 @@ class Description extends Component {
 
     //Demandas y ss son arreglos con los datos de los meses que me importan.
     calcularRequerimientosNetos(demandas, ss) {
-        let requerimientosNetos = 0;
+        let requerimientosNetos = [];
 
         for (let i = 0; i < demandas.length; i++) {
             if (i === 0) {
-                requerimientosNetos = requerimientosNetos + demandas[i] + Math.ceil(ss[i] * demandas[i]);
+                requerimientosNetos.push(demandas[i] + Math.ceil(ss[i] * demandas[i]));
             }
             else {
-                requerimientosNetos = requerimientosNetos + demandas[i] + Math.ceil(ss[i] * demandas[i]) - Math.ceil(ss[i - 1] * demandas[i - 1]);
+                requerimientosNetos.push(demandas[i] + Math.ceil(ss[i] * demandas[i]) - Math.ceil(ss[i - 1] * demandas[i - 1]));
             }
         }
 
@@ -101,28 +127,32 @@ class Description extends Component {
     }
 
     //Requerimientos tiene que ser un Array y costoAdquirir tiene que ser un número.
-    calcularCostoAdquirir(requerimientosNetos, costoAdquirir) {
-        let costo = 0;
+    calcularCostoAdquirir(cantidadAPedir, costoAdquirir) {
+        return cantidadAPedir * costoAdquirir;
+    }
 
-        requerimientosNetos.map((d) => {
-            costo = costo + d * costoAdquirir;
+    calcularCantidadAPedir(requerimientosNetos, periodosActuales) {
+        let cantidad = 0;
+
+        periodosActuales.map((periodo) => {
+            cantidad = cantidad + requerimientosNetos[periodo]
         })
 
-        return costo;
+        return cantidad;
     }
 
     //Requerimientos,ss,y costoMantener tienen que ser un Array y leadTime tiene que ser un número.
     //Solamente se pasa en requerimientos netos los periodos que quiero hacer
-    calcularCostoMantener(requerimientosNetos, ss, costoMantener, leadTime, periodosActuales) {
+    calcularCostoMantener(demandas, requerimientosNetos, ss, costoMantener, leadTime, periodosActuales) {
 
         let costo = 0;
 
         for (let i = periodosActuales[0]; i < periodosActuales[periodosActuales.length - 1]; i++) {
             let sumaRequerimientos = 0;
-            for (let j = i + 1; i < requerimientosNetos.length; j++) {
+            for (let j = i + 1; j < periodosActuales.length; j++) {
                 sumaRequerimientos = sumaRequerimientos + requerimientosNetos[j + leadTime];
             }
-            costo = costo + (sumaRequerimientos + ss[i + leadTime]) * costoMantener[i];
+            costo = costo + (sumaRequerimientos + Math.ceil(ss[i + leadTime] * demandas[i + leadTime])) * costoMantener[i];
         }
 
         return costo;
@@ -134,6 +164,21 @@ class Description extends Component {
                 <option key={d.nombre} className="dropdown-item">{d.nombre}</option>
             )
         });
+    }
+
+    imprimirPeriodosActuales(periodosActuales) {
+        let resp = "";
+
+        periodosActuales.map((d, i) => {
+            if (i === 0) {
+                resp = resp.concat(d + 1);
+            }
+            else {
+                resp = resp.concat(",", d + 1);
+            }
+        })
+
+        return resp;
     }
 
     render() {
@@ -199,7 +244,7 @@ class Description extends Component {
                                         <th colSpan="7" scope="colgroup">{this.state.insumo}</th>
                                     </tr>
                                     <tr>
-                                        <th>Se pide para</th>
+                                        <th>Se pide en</th>
                                         <th>Periodo para los que se pide</th>
                                         <th>Cantidad a pedir</th>
                                         <th>Periodo en el que la orden llega</th>
