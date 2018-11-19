@@ -2223,3 +2223,7 @@ table {
 .first-row {
     min-width: 18vh;
 }
+
+.resaltado {
+    background-color: yellow;
+}

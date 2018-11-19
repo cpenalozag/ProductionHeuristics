@@ -20,6 +20,7 @@ class Description extends Component {
         this.obtenerCostosAdquirir = this.obtenerCostosAdquirir.bind(this);
         this.obtenerCostosPedir = this.obtenerCostosPedir.bind(this);
         this.obtenerLeadTime = this.obtenerLeadTime.bind(this);
+        this.sm = this.sm.bind(this);
     }
 
     handleMCU() {
@@ -67,29 +68,28 @@ class Description extends Component {
                         <td>{resp.split("$")[1]}</td>
                         <td>{resp.split("$")[2]}</td>
                         <td>{resp.split("$")[3]}</td>
-                        <td>{resp.split("$")[4]}</td>
-                        <td>{resp.split("$")[5]}</td>
-                        <td>{resp.split("$")[6]}</td>
-                        <td>{resp.split("$")[7]}</td>
+                        <td>{Math.ceil(resp.split("$")[4])}</td>
+                        <td>{Math.ceil(resp.split("$")[5])}</td>
+                        <td>{Math.ceil(resp.split("$")[6])}</td>
+                        <td>{Math.ceil(resp.split("$")[7])}</td>
                     </tr>
                 )
             });
         }
         else if (this.state.politica === "SM") {
             let resultado = this.sm();
-
             return resultado.map((resp, i) => {
                 
                 return (
-                    <tr className={this.state.colorear.includes(resp.split("$")[0])?"resaltado":""} key={i}>
+                    <tr className={this.props.colorear.includes(parseInt(resp.split("$")[0]))?"resaltado":""} key={i}>
                         <td>{resp.split("$")[1]}</td>
                         <td>{resp.split("$")[2]}</td>
                         <td>{resp.split("$")[3]}</td>
                         <td>{resp.split("$")[4]}</td>
-                        <td>{resp.split("$")[5]}</td>
-                        <td>{resp.split("$")[6]}</td>
-                        <td>{resp.split("$")[7]}</td>
-                        <td>{resp.split("$")[8]}</td>
+                        <td>{Math.ceil(resp.split("$")[5])}</td>
+                        <td>{Math.ceil(resp.split("$")[6])}</td>
+                        <td>{Math.ceil(resp.split("$")[7])}</td>
+                        <td>{Math.ceil(resp.split("$")[8])}</td>
                     </tr>
                 )
             });
@@ -107,7 +107,6 @@ class Description extends Component {
             periodosActuales = [],
             cantidadMaximaDeLeadTime = 3,
             numPeriodos = 6
-            indice = 0;
 
         let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
 
@@ -123,7 +122,7 @@ class Description extends Component {
             let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
             let costoTotal = costoAdquirir + costoMantener + costoPedir;
 
-            let resultadoAAnadir = indice + "$" + (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
+            let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
                 "$" + cantidadAPedir + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
                 + "$" + costoMantener + "$" + costoTotal;
 
@@ -135,12 +134,9 @@ class Description extends Component {
                 let costoMantenerPeriodoAnterior = resultadoAnterior.split("$")[6];
                 if (Math.abs(costoPedir - costoMantener) > Math.abs(costoPedirPeriodoAnterior - costoMantenerPeriodoAnterior)) {
                     periodosActuales = [];
-                    this.setState({colorear: this.state.colorear.push(indice-1)})
                     i--;
-                    color
                 }
             }
-            indice++;
             i++;
         }
 
@@ -207,7 +203,8 @@ class Description extends Component {
             resultado = [],
             periodosActuales = [],
             cantidadMaximaDeLeadTime = 3,
-            numPeriodos = 6;
+            numPeriodos = 6,    
+            indice = 0;
 
 
         console.log("demandas",demandas)
@@ -225,7 +222,7 @@ class Description extends Component {
             let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i - leadTime];
             let costoTotal = costoAdquirir + costoMantener + costoPedir;
 
-            let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
+            let resultadoAAnadir =indice + "$"+  (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
                 "$" + cantidadAPedir + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
                 + "$" + costoMantener + "$" + costoTotal;
 
@@ -234,17 +231,19 @@ class Description extends Component {
             if (periodosActuales.length > 1) {
                 console.log("periodosActuales",periodosActuales)
                 let resultadoAnterior = resultado[resultado.length - 2];
-                let costoTotalPeriodoAnterior = resultadoAnterior.split("$")[7];
+                let costoTotalPeriodoAnterior = resultadoAnterior.split("$")[8];
                 console.log("ahora",costoTotal / (periodosActuales.length));
                 console.log("anterior", costoTotalPeriodoAnterior / (periodosActuales.length -1))
                 if (costoTotal / (periodosActuales.length) > costoTotalPeriodoAnterior / (periodosActuales.length-1)) {
+                    this.props.colorear.push(indice-1);
                     periodosActuales = [];
                     i--;
                 }
             }
-
+            indice++;
             i++;
         }
+        this.props.colorear.push(indice-1);
 
         return resultado;
 
@@ -328,7 +327,7 @@ class Description extends Component {
                 if (tipoCirugia === "Estéticas" && tipoDieta === "Sana") {
                     demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
-                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato-270;
                     demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
