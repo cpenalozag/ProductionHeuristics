@@ -14,6 +14,11 @@ class Description extends Component {
         this.handlePPB = this.handlePPB.bind(this);
         this.handleSM = this.handleSM.bind(this);
         this.onChangeDropdown = this.onChangeDropdown.bind(this);
+        this.calcularDemandas = this.calcularDemandas.bind(this);
+        this.calcularSS = this.calcularSS.bind(this);
+        this.obtenerCostosAdquirir = this.obtenerCostosAdquirir.bind(this);
+        this.obtenerCostosPedir = this.obtenerCostosPedir.bind(this);
+        this.obtenerLeadTime = this.obtenerLeadTime.bind(this);
     }
 
     handleMCU() {
@@ -90,7 +95,6 @@ class Description extends Component {
     }
 
     ppb() {
-
         let demandas = [100, 100, 100, 100, 100, 100],
             ss = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
             costosAdquirir = [8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
@@ -174,8 +178,8 @@ class Description extends Component {
             if (periodosActuales.length > 1) {
                 let resultadoAnterior = resultado[resultado.length - 2];
                 let cantidadAPedirPeriodoAnterior = resultadoAnterior.split("$")[2];
-                let costoTotalPeriodoAnterior  = resultadoAnterior.split("$")[7];
-                if (costoTotal/cantidadAPedir > costoTotalPeriodoAnterior/cantidadAPedirPeriodoAnterior) {
+                let costoTotalPeriodoAnterior = resultadoAnterior.split("$")[7];
+                if (costoTotal / cantidadAPedir > costoTotalPeriodoAnterior / cantidadAPedirPeriodoAnterior) {
                     periodosActuales = [];
                     i--;
                 }
@@ -189,18 +193,19 @@ class Description extends Component {
     }
 
     sm() {
-
-        let demandas = [100, 100, 100, 100, 100, 100],
-            ss = [0.1, 0.1, 0.1, 0.1, 0.1, 0.1],
-            costosAdquirir = [8, 8, 8, 8, 8, 8, 8, 8, 8, 8],
-            costosMantener = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-            costosPedir = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
-            leadTime = 0,
+        let demandas = this.calcularDemandas(),
+            ss = this.calcularSS(),
+            costosAdquirir = this.obtenerCostosAdquirir(),
+            costosMantener = this.obtenerCostosMantener(),
+            costosPedir = this.obtenerCostosPedir(),
+            leadTime = this.obtenerLeadTime(),
             resultado = [],
             periodosActuales = [],
             cantidadMaximaDeLeadTime = 3,
             numPeriodos = 6;
 
+
+        console.log("demandas",demandas)
         let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
 
         let i = 0;
@@ -212,7 +217,7 @@ class Description extends Component {
             //Costos
             let costoAdquirir = this.calcularCostoAdquirir(cantidadAPedir, costosAdquirir[Math.abs(i - leadTime)]);
             let costoMantener = this.calcularCostoMantener(demandas, requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
-            let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
+            let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i - leadTime];
             let costoTotal = costoAdquirir + costoMantener + costoPedir;
 
             let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
@@ -222,9 +227,12 @@ class Description extends Component {
             resultado.push(resultadoAAnadir);
 
             if (periodosActuales.length > 1) {
+                console.log("periodosActuales",periodosActuales)
                 let resultadoAnterior = resultado[resultado.length - 2];
-                let costoTotalPeriodoAnterior  = resultadoAnterior.split("$")[7];
-                if (costoTotal/(periodosActuales.length-1) > costoTotalPeriodoAnterior/(periodosActuales.length-2) ){
+                let costoTotalPeriodoAnterior = resultadoAnterior.split("$")[7];
+                console.log("ahora",costoTotal / (periodosActuales.length));
+                console.log("anterior", costoTotalPeriodoAnterior / (periodosActuales.length -1))
+                if (costoTotal / (periodosActuales.length) > costoTotalPeriodoAnterior / (periodosActuales.length-1)) {
                     periodosActuales = [];
                     i--;
                 }
@@ -240,16 +248,27 @@ class Description extends Component {
     //Demandas y ss son arreglos con los datos de los meses que me importan.
     calcularRequerimientosNetos(demandas, ss) {
         let requerimientosNetos = [];
-
         for (let i = 0; i < demandas.length; i++) {
             if (i === 0) {
-                requerimientosNetos.push(demandas[i] + Math.ceil(ss[i] * demandas[i]));
+                let rn = demandas[i] + Math.ceil(ss[i] * demandas[i]);
+                if(rn> 0){
+                    requerimientosNetos.push(rn);
+                }
+                else{
+                    requerimientosNetos.push(0);
+                }
+                
             }
             else {
-                requerimientosNetos.push(demandas[i] + Math.ceil(ss[i] * demandas[i]) - Math.ceil(ss[i - 1] * demandas[i - 1]));
+                let rn = demandas[i] + Math.ceil(ss[i] * demandas[i]) - Math.ceil(ss[i - 1] * demandas[i - 1]);
+                if(rn>0){
+                    requerimientosNetos.push(rn);
+                }
+                else{
+                    requerimientosNetos.push(0);
+                }
             }
         }
-
         return requerimientosNetos;
     }
 
@@ -274,7 +293,7 @@ class Description extends Component {
 
         let costo = 0;
 
-        for (let i = periodosActuales[0]; i < periodosActuales[periodosActuales.length - 1]; i++) {
+        for (let i = periodosActuales[0]; i < periodosActuales[periodosActuales.length - 1]+1; i++) {
             let sumaRequerimientos = 0;
             for (let j = i + 1; j < periodosActuales.length; j++) {
                 sumaRequerimientos = sumaRequerimientos + requerimientosNetos[j + leadTime];
@@ -284,6 +303,178 @@ class Description extends Component {
 
         return costo;
 
+    }
+
+    calcularDemandas() {
+        let demandas = this.props.demand;
+        let recipes = this.props.recipes;
+        let insumo = this.state.insumo;
+
+        let demanda = [0, 0, 0, 0, 0, 0];
+
+        demandas.map((demand) => {
+            let tipoCirugia = demand.tipo;
+
+            recipes.map((recipe) => {
+                let tipoDieta = recipe.nombre;
+                let platosRequeridos = recipe[insumo];
+                let cantidadPorPlato = parseFloat(recipe.cantidad);
+
+                if (tipoCirugia === "Estéticas" && tipoDieta === "Sana") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Cardiacas" && tipoDieta === "Calorías y proteínas") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Respiratorias" && tipoDieta === "Vitaminas y proteínas") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Ortopédicas" && tipoDieta === "Balanceada") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Neurológica" && tipoDieta === "Variada") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Pediátricas" && tipoDieta === "Básica") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+            });
+        });
+        return demanda;
+    }
+
+    calcularSS() {
+        let materials = this.props.materials;
+        let insumo = this.state.insumo;
+
+        let ss = [0, 0, 0, 0, 0, 0];
+
+        materials.map((material) => {
+            if (material.nombre == insumo) {
+                ss[0] = parseFloat(material.ss.primero) / 100;
+                ss[1] = parseFloat(material.ss.segundo) / 100;
+                ss[2] = parseFloat(material.ss.tercero) / 100;
+                ss[2] = parseFloat(material.ss.tercero) / 100;
+                ss[3] = parseFloat(material.ss.cuarto) / 100;
+                ss[4] = parseFloat(material.ss.quinto) / 100;
+                ss[5] = parseFloat(material.ss.sexto) / 100;
+            }
+        });
+
+        return (ss);
+    }
+
+    obtenerCostosAdquirir() {
+        let materials = this.props.materials;
+        let insumo = this.state.insumo;
+
+        let costos = [0,0,0,0,0,0,0,0,0];
+
+        materials.map((material) => {
+            if (material.nombre == insumo) {
+                costos[0] = parseFloat(material.costos.adquirir.menos2);
+                costos[1] = parseFloat(material.costos.adquirir.menos1);
+                costos[2] = parseFloat(material.costos.adquirir.cero);
+                costos[3] = parseFloat(material.costos.adquirir.primero);
+                costos[4] = parseFloat(material.costos.adquirir.segundo);
+                costos[5] = parseFloat(material.costos.adquirir.tercero);
+                costos[6] = parseFloat(material.costos.adquirir.cuarto);
+                costos[7] = parseFloat(material.costos.adquirir.quinto);
+                costos[8] = parseFloat(material.costos.adquirir.sexto);
+            }
+        });
+
+    return costos;
+    }
+
+    obtenerCostosMantener() {
+        let materials = this.props.materials;
+        let insumo = this.state.insumo;
+
+        let costos = [0,0,0,0,0,0,0,0,0];
+
+        materials.map((material) => {
+            if (material.nombre == insumo) {
+                costos[0] = parseFloat(material.costos.mantener.menos2);
+                costos[1] = parseFloat(material.costos.mantener.menos1);
+                costos[2] = parseFloat(material.costos.mantener.cero);
+                costos[3] = parseFloat(material.costos.mantener.primero);
+                costos[4] = parseFloat(material.costos.mantener.segundo);
+                costos[5] = parseFloat(material.costos.mantener.tercero);
+                costos[6] = parseFloat(material.costos.mantener.cuarto);
+                costos[7] = parseFloat(material.costos.mantener.quinto);
+                costos[8] = parseFloat(material.costos.mantener.sexto);
+            }
+        });
+
+        return costos;
+    }
+
+    obtenerCostosPedir() {
+
+        let materials = this.props.materials;
+        let insumo = this.state.insumo;
+
+        let costos = [0,0,0,0,0,0,0,0,0];
+
+        materials.map((material) => {
+            if (material.nombre == insumo) {
+                costos[0] = parseFloat(material.costos.ordenar.menos2);
+                costos[1] = parseFloat(material.costos.ordenar.menos1);
+                costos[2] = parseFloat(material.costos.ordenar.cero);
+                costos[3] = parseFloat(material.costos.ordenar.primero);
+                costos[4] = parseFloat(material.costos.ordenar.segundo);
+                costos[5] = parseFloat(material.costos.ordenar.tercero);
+                costos[6] = parseFloat(material.costos.ordenar.cuarto);
+                costos[7] = parseFloat(material.costos.ordenar.quinto);
+                costos[8] = parseFloat(material.costos.ordenar.sexto);
+            }
+        });
+
+        return costos;
+    }
+
+    obtenerLeadTime() {
+        let materials = this.props.materials;
+        let insumo = this.state.insumo;
+
+        let leadTime = 0;
+        materials.map((material) => {
+            if (material.nombre == insumo) {
+                leadTime = parseFloat(material.leadtime);
+            }
+        });
+        return leadTime;
     }
     renderDropdownItems() {
         return this.props.materials.map((d) => {
