@@ -11,7 +11,15 @@ class LeadTimes extends Component {
         const target = event.target;
         const value = target.value;
         const material = target.name;
-        Meteor.call("materials.updateLT", material, value)
+        try {
+            const v = parseInt(value)
+            if (v>=0){
+                Meteor.call("materials.updateLT", material, value)
+            }
+        }
+        catch (e) {
+
+        }
     }
 
     renderLeadTimes() {

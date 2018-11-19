@@ -15,7 +15,17 @@ class Demand extends Component {
         const parts = name.split(",")
         const type = parts[0]
         const period = parts[1]
-        Meteor.call("demand.update",type,period,value)
+        
+        try {
+            const v = parseInt(value)
+            if (v>=0){
+                Meteor.call("demand.update",type,period,value)
+            }
+        }
+        catch (e) {
+
+        }
+        
     }
 
     renderDemand() {

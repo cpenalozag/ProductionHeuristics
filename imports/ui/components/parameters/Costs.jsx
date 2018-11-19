@@ -15,7 +15,16 @@ class Costs extends Component {
         const type = parts[0]
         const material = parts[1]
         const period = parts[2]
-        Meteor.call("materials.updateCost", type, material, period, value)
+
+        try {
+            const v = parseFloat(value)
+            if (v>=0){
+                Meteor.call("materials.updateCost", type, material, period, value)
+            }
+        }
+        catch (e) {
+
+        }
     }
 
     renderCostsLeadTime() {

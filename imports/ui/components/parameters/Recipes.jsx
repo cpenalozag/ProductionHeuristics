@@ -18,14 +18,32 @@ class Recipes extends Component {
         const parts = name.split(",")
         const ingredient = parts[0]
         const recipe = parts[1]
-        Meteor.call("recipes.updateIngredients", recipe, ingredient, value)
+
+        try {
+            const v = parseFloat(value)
+            if (v>=0){
+                Meteor.call("recipes.updateIngredients", recipe, ingredient, value)
+            }
+        }
+        catch (e) {
+
+        }
     }
 
     handleInputChangeQuantity(event) {
         const target = event.target;
         const value = target.value;
         const name = target.name;
-        Meteor.call("recipes.updateQuantity", name, value)
+
+        try {
+            const v = parseInt(value)
+            if (v>=0){
+                Meteor.call("recipes.updateQuantity", name, value)
+            }
+        }
+        catch (e) {
+
+        }
     }
 
     renderRecipeQuantities() {
