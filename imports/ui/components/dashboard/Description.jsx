@@ -7,7 +7,8 @@ class Description extends Component {
 
         this.state = {
             politica: "MCU",
-            insumo: "Sopa"
+            insumo: "Sopa",
+            colorear : []
         }
 
         this.handleMCU = this.handleMCU.bind(this);
@@ -78,9 +79,9 @@ class Description extends Component {
             let resultado = this.sm();
 
             return resultado.map((resp, i) => {
+                
                 return (
-                    <tr key={i}>
-                        <td>{resp.split("$")[0]}</td>
+                    <tr className={this.state.colorear.includes(resp.split("$")[0])?"resaltado":""} key={i}>
                         <td>{resp.split("$")[1]}</td>
                         <td>{resp.split("$")[2]}</td>
                         <td>{resp.split("$")[3]}</td>
@@ -88,6 +89,7 @@ class Description extends Component {
                         <td>{resp.split("$")[5]}</td>
                         <td>{resp.split("$")[6]}</td>
                         <td>{resp.split("$")[7]}</td>
+                        <td>{resp.split("$")[8]}</td>
                     </tr>
                 )
             });
@@ -104,7 +106,8 @@ class Description extends Component {
             resultado = [],
             periodosActuales = [],
             cantidadMaximaDeLeadTime = 3,
-            numPeriodos = 6;
+            numPeriodos = 6
+            indice = 0;
 
         let requerimientosNetos = this.calcularRequerimientosNetos(demandas, ss);
 
@@ -120,7 +123,7 @@ class Description extends Component {
             let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i + 1 - leadTime];
             let costoTotal = costoAdquirir + costoMantener + costoPedir;
 
-            let resultadoAAnadir = (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
+            let resultadoAAnadir = indice + "$" + (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
                 "$" + cantidadAPedir + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
                 + "$" + costoMantener + "$" + costoTotal;
 
@@ -132,10 +135,12 @@ class Description extends Component {
                 let costoMantenerPeriodoAnterior = resultadoAnterior.split("$")[6];
                 if (Math.abs(costoPedir - costoMantener) > Math.abs(costoPedirPeriodoAnterior - costoMantenerPeriodoAnterior)) {
                     periodosActuales = [];
+                    this.setState({colorear: this.state.colorear.push(indice-1)})
                     i--;
+                    color
                 }
             }
-
+            indice++;
             i++;
         }
 
