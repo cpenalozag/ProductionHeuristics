@@ -31,7 +31,7 @@ class Costs extends Component {
         return this.props.materials.map((material) => {
             return (
                 <tr key={material._id}>
-                    <td>{material.nombre}</td>
+                    <td className="first-row">{material.nombre}</td>
                     <td><input className="form-control text-center" onChange={this.handleInputChange}
                                name={`ordenar,${material.nombre},menos2`} min="0" required="" type="number"
                                defaultValue={material.costos.ordenar.menos2}/></td>
@@ -70,7 +70,7 @@ class Costs extends Component {
         return this.props.materials.map((material) => {
             return (
                 <tr key={material._id}>
-                    <td>{material.nombre}</td>
+                    <td className="first-row">{material.nombre}</td>
                     <td><input className="form-control text-center" onChange={this.handleInputChange}
                                name={`ordenar,${material.nombre},primero`} min="0" required="" type="number"
                                defaultValue={material.costos.ordenar.primero}/></td>
@@ -109,7 +109,7 @@ class Costs extends Component {
         return this.props.materials.map((material) => {
             return (
                 <tr key={material._id}>
-                    <td>{material.nombre}</td>
+                    <td className="first-row">{material.nombre}</td>
                     <td><input className="form-control text-center" onChange={this.handleInputChange}
                                name={`ordenar,${material.nombre},cuarto`} min="0" required="" type="number"
                                defaultValue={material.costos.ordenar.cuarto}/></td>

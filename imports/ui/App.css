@@ -538,7 +538,7 @@ body > .navbar-collapse.has-image:after {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-    padding: 2px 2px;
+    padding: 1px 2px;
     vertical-align: middle;
 }
 
@@ -711,8 +711,9 @@ body > .navbar-collapse.has-image:after {
 }
 
 .form-control {
+    height: auto;
     text-align: center;
-    padding: 1px 1px;
+    padding: 0px 1px;
 }
 
 table .form-control {
@@ -2219,10 +2220,6 @@ table {
 .badge {
     margin-left: 5px;
 }
-.gif-container {
-    width: 100%;
-    text-align: center;
-}
-.gif {
-    max-width: 35vh;
+.first-row {
+    min-width: 18vh;
 }

@@ -64,7 +64,7 @@ class Recipes extends Component {
         return this.names.map((ingredient) => {
             return (
                 <tr key={ingredient}>
-                    <td>{ingredient}</td>
+                    <td className="first-row">{ingredient}</td>
                     <td><input className="form-control text-center"
                                onChange={this.handleInputChange} name={`${ingredient},${this.props.recipes[0].nombre}`}
                                min="0"
