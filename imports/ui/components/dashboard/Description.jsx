@@ -422,6 +422,10 @@ class Description extends Component {
                             </table>
                         </form>
                     </div>
+                    <br />
+                    <div className="card-body ">
+                        <p className="card-category">Las filas resaltadas en amarillo corresponden a la solución.</p>
+                    </div>
                 </div>
             </div >
         );
