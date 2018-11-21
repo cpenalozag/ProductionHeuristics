@@ -203,15 +203,59 @@ class Description extends Component {
             let tipoCirugia = demand.tipo;
 
             recipes.map((recipe) => {
+                
+                let tipoDieta = recipe.nombre;
                 let platosRequeridos = recipe[insumo];
                 let cantidadPorPlato = parseFloat(recipe.cantidad);
 
-                demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
-                demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
-                demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
-                demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
-                demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
-                demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                if (tipoCirugia === "Estéticas" && tipoDieta === "Sana") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato - 270;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Cardiacas" && tipoDieta === "Calorías y proteínas") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Respiratorias" && tipoDieta === "Vitaminas y proteínas") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Ortopédicas" && tipoDieta === "Balanceada") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Neurológica" && tipoDieta === "Variada") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
+                else if (tipoCirugia === "Pediátricas" && tipoDieta === "Básica") {
+                    demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                    demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
+                }
             });
         });
         return demanda;
