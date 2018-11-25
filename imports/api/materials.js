@@ -35,6 +35,7 @@ Meteor.methods({
         });
     },
     "materials.initialInsert"() {
+        Materials.remove({});
         data.forEach((item) => {
             Materials.insert(
                 item
