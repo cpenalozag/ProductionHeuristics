@@ -13,7 +13,7 @@ class LeadTimes extends Component {
         const material = target.name;
         try {
             const v = parseInt(value)
-            if (v>=0){
+            if (v >= 0 && v <= 3) {
                 Meteor.call("materials.updateLT", material, value)
             }
         }
@@ -47,6 +47,8 @@ class LeadTimes extends Component {
                             <h4 className="card-title">Lead Times</h4>
                         </div>
                         <div className="card-body ">
+                            <p>Ingrese los lead times asociados a cada insumo. Los valores deben ser enteros mayores a
+                                0.</p>
                             <table className="table table-bordered">
                                 <tbody className="">
                                 <tr>

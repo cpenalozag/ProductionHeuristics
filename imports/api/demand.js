@@ -21,6 +21,7 @@ Meteor.methods({
         });
     },
     "demand.initialInsert"() {
+        Demand.remove({});
         data.forEach((demand) => {
             Demand.insert(demand)
         })

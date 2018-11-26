@@ -405,13 +405,13 @@ class Description extends Component {
                     <br />
                     <div className="row">
                         <div className="col-md-2 mx-auto">
-                            <input className="btn btn-primary" type="submit" value="PPB" onClick={this.handlePPB} />
+                            <input className={`btn btn-primary ${this.state.politica==="PPB"?"active":""}`} type="submit" value="PPB" onClick={this.handlePPB} />
                         </div>
                         <div className="col-md-2 mx-auto">
-                            <input className="btn btn-primary" type="submit" value="Silver Meal" onClick={this.handleSM} />
+                            <input className={`btn btn-primary ${this.state.politica==="SM"?"active":""}`} type="submit" value="Silver Meal" onClick={this.handleSM} />
                         </div>
                         <div className="col-md-2 mx-auto">
-                            <input className="btn btn-primary" type="submit" value="MCU" onClick={this.handleMCU} />
+                            <input className={`btn btn-primary ${this.state.politica==="MCU"?"active":""}`} type="submit" value="MCU" onClick={this.handleMCU} />
                         </div>
                     </div>
                     <div className="card-header ">

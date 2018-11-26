@@ -15,17 +15,17 @@ class Demand extends Component {
         const parts = name.split(",")
         const type = parts[0]
         const period = parts[1]
-        
+
         try {
             const v = parseInt(value)
-            if (v>=0){
-                Meteor.call("demand.update",type,period,value)
+            if (v >= 0) {
+                Meteor.call("demand.update", type, period, value)
             }
         }
         catch (e) {
 
         }
-        
+
     }
 
     renderDemand() {
@@ -62,9 +62,11 @@ class Demand extends Component {
                 <div className="card">
                     <div className="content">
                         <div className="card-header ">
-                            <h4 className="card-title">Demanda por tipo de cirugía para los próximos 6 meses</h4>
+                            <h4 className="card-title">Demanda por tipo de cirugía</h4>
                         </div>
                         <div className="card-body ">
+                            <p>Ingrese la demanda pronosticada para cada tipo de cirugía para los próximos 6 meses. Los
+                                valores deben ser enteros mayores a 0.</p>
                             <table className="table table-bordered">
                                 <tbody>
                                 <tr>
@@ -80,7 +82,7 @@ class Demand extends Component {
                                     <th>5</th>
                                     <th>6</th>
                                 </tr>
-                                {this.props.demand[0]?this.renderDemand():<tr></tr>}
+                                {this.props.demand[0] ? this.renderDemand() : <tr></tr>}
                                 </tbody>
                             </table>
                         </div>

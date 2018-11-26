@@ -24,6 +24,7 @@ Meteor.methods({
         });
     },
     "recipes.initialInsert"() {
+        Recipes.remove({});
         data.forEach((recipe) => {
             Recipes.insert(
                 recipe
