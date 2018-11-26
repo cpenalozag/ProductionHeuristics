@@ -179,15 +179,13 @@ class Description extends Component {
     calcularCostoMantener(demandas, requerimientosNetos, ss, costoMantener, leadTime, periodosActuales) {
 
         let costo = 0;
-
         for (let i = periodosActuales[0]; i < periodosActuales[periodosActuales.length - 1] + 1; i++) {
             let sumaRequerimientos = 0;
-            for (let j = i + 1; j < periodosActuales.length; j++) {
+            for (let j = i + 1; j < periodosActuales[periodosActuales.length - 1] + 1; j++) {
                 sumaRequerimientos = sumaRequerimientos + requerimientosNetos[j + leadTime];
             }
             costo = costo + (sumaRequerimientos + Math.ceil(ss[i + leadTime] * demandas[i + leadTime])) * costoMantener[i];
         }
-
         return costo;
 
     }
@@ -211,12 +209,12 @@ class Description extends Component {
                 if (tipoCirugia === "Estéticas" && tipoDieta === "Sana") {
                     demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
-                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato - 270;
+                    demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[3] = demanda[3] + parseFloat(demand.demanda.cuarto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                 }
-                else if (tipoCirugia === "Cardiacas" && tipoDieta === "Calorías y proteínas") {
+                if (tipoCirugia === "Cardiacas" && tipoDieta === "Calorías y proteínas") {
                     demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
@@ -224,7 +222,7 @@ class Description extends Component {
                     demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                 }
-                else if (tipoCirugia === "Respiratorias" && tipoDieta === "Vitaminas y proteínas") {
+                if (tipoCirugia === "Respiratorias" && tipoDieta === "Vitaminas y proteínas") {
                     demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
@@ -232,7 +230,7 @@ class Description extends Component {
                     demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                 }
-                else if (tipoCirugia === "Ortopédicas" && tipoDieta === "Balanceada") {
+                if (tipoCirugia === "Ortopédicas" && tipoDieta === "Balanceada") {
                     demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
@@ -240,7 +238,7 @@ class Description extends Component {
                     demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                 }
-                else if (tipoCirugia === "Neurológica" && tipoDieta === "Variada") {
+                if (tipoCirugia === "Neurológica" && tipoDieta === "Variada") {
                     demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
@@ -248,7 +246,7 @@ class Description extends Component {
                     demanda[4] = demanda[4] + parseFloat(demand.demanda.quinto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[5] = demanda[5] + parseFloat(demand.demanda.sexto) * parseFloat(platosRequeridos) * cantidadPorPlato;
                 }
-                else if (tipoCirugia === "Pediátricas" && tipoDieta === "Básica") {
+                if (tipoCirugia === "Pediátricas" && tipoDieta === "Básica") {
                     demanda[0] = demanda[0] + parseFloat(demand.demanda.primero) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[1] = demanda[1] + parseFloat(demand.demanda.segundo) * parseFloat(platosRequeridos) * cantidadPorPlato;
                     demanda[2] = demanda[2] + parseFloat(demand.demanda.tercero) * parseFloat(platosRequeridos) * cantidadPorPlato;
