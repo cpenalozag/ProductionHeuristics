@@ -83,7 +83,10 @@ class Description extends Component {
             //Costos
             let costoAdquirir = this.calcularCostoAdquirir(cantidadAPedir, costosAdquirir[Math.abs(i - leadTime)]);
             let costoMantener = this.calcularCostoMantener(demandas, requerimientosNetos, ss, costosMantener, leadTime, periodosActuales);
-            let costoPedir = costosPedir[cantidadMaximaDeLeadTime + i - leadTime];
+            let costoPedir = 0;
+            if(cantidadAPedir > 0){
+                costoPedir = costosPedir[cantidadMaximaDeLeadTime + i - leadTime];
+            }
             let costoTotal = costoAdquirir + costoMantener + costoPedir;
 
             let resultadoAAnadir = indice + "$" + (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
