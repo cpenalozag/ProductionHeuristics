@@ -2227,3 +2227,6 @@ table {
 .resaltado {
     background-color: yellow;
 }
+.active {
+    background-color: #0e1b40;
+}

@@ -20,8 +20,8 @@ class Recipes extends Component {
         const recipe = parts[1]
 
         try {
-            const v = parseFloat(value)
-            if (v>=0){
+            const v = parseFloat(value);
+            if (v >= 0) {
                 Meteor.call("recipes.updateIngredients", recipe, ingredient, value)
             }
         }
@@ -36,9 +36,9 @@ class Recipes extends Component {
         const name = target.name;
 
         try {
-            const v = parseInt(value)
-            if (v>=0){
-                Meteor.call("recipes.updateQuantity", name, value)
+            const v = parseInt(value);
+            if (v >= 0) {
+                Meteor.call("recipes.updateQuantity", name, v)
             }
         }
         catch (e) {
@@ -47,7 +47,7 @@ class Recipes extends Component {
     }
 
     renderRecipeQuantities() {
-        return this.props.recipes.map((recipe)=>{
+        return this.props.recipes.map((recipe) => {
             return (
                 <tr key={recipe._id}>
                     <td>{recipe.nombre}</td>
@@ -108,6 +108,8 @@ class Recipes extends Component {
                             <h4 className="card-title">Número de platos requeridos por dieta</h4>
                         </div>
                         <div className="card-body ">
+                            <p>Ingrese la cantidad de platos requeridos para cada dieta. Los valores deben ser
+                                enteros mayores a 0.</p>
                             <table className="table table-bordered">
                                 <tbody>
                                 <tr>
@@ -126,6 +128,8 @@ class Recipes extends Component {
                             <h4 className="card-title">Insumos requeridos por receta</h4>
                         </div>
                         <div className="card-body ">
+                            <p>Ingrese la cantidad de cada insumo requerido para cada receta. Los valores deben ser
+                                reales mayores a 0.</p>
                             <table className="table table-bordered">
                                 <tbody>
                                 <tr>

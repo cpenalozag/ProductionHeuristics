@@ -153,6 +153,8 @@ class Costs extends Component {
                             <h4 className="card-title">Estructura de costos</h4>
                         </div>
                         <div className="card-body ">
+                            <p>Ingrese los costos asociados a mantener, pedir y adquirir un producto para cada mes.
+                                Ingrese un valor mayor a 0.</p>
                             <table className="table table-bordered">
                                 <tbody className="">
                                 <tr>
