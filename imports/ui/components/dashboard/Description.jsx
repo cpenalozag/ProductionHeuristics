@@ -89,8 +89,8 @@ class Description extends Component {
             }
             let costoTotal = costoAdquirir + costoMantener + costoPedir;
 
-            let resultadoAAnadir = indice + "$" + (periodosActuales[0] + 1) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
-                "$" + cantidadAPedir + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + costoPedir + "$" + costoAdquirir
+            let resultadoAAnadir = indice + "$" + (periodosActuales[0] + 1 - leadTime) + "$" + this.imprimirPeriodosActuales(periodosActuales) +
+                "$" + cantidadAPedir + "$" +  (periodosActuales[0] + 1)+ "$" + costoPedir + "$" + costoAdquirir
                 + "$" + costoMantener + "$" + costoTotal;
 
             resultado.push(resultadoAAnadir);
