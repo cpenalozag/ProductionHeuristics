@@ -97,9 +97,9 @@ class Description extends Component {
                 let resultadoAnterior = resultado[resultado.length - 2];
 
                 if (this.state.politica === "MCU") {
-                    let cantidadAPedirPeriodoAnterior = resultadoAnterior.split("$")[2];
+                    let cantidadAPedirPeriodoAnterior = resultadoAnterior.split("$")[3];
                     let costoTotalPeriodoAnterior = resultadoAnterior.split("$")[8];
-                    if (costoTotal / cantidadAPedir > costoTotalPeriodoAnterior / cantidadAPedirPeriodoAnterior) {
+                    if ((costoTotal / cantidadAPedir) > (costoTotalPeriodoAnterior / cantidadAPedirPeriodoAnterior)) {
                         this.props.colorear.push(indice - 1);
                         periodosActuales = [];
                         i--;
