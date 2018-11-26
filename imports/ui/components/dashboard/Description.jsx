@@ -400,21 +400,6 @@ class Description extends Component {
                     </div>
                     <hr />
                     <div className="card-header ">
-                        <h4 className="card-title">Escoge la heurística:</h4>
-                    </div>
-                    <br />
-                    <div className="row">
-                        <div className="col-md-2 mx-auto">
-                            <input className={`btn btn-primary ${this.state.politica==="PPB"?"active":""}`} type="submit" value="PPB" onClick={this.handlePPB} />
-                        </div>
-                        <div className="col-md-2 mx-auto">
-                            <input className={`btn btn-primary ${this.state.politica==="SM"?"active":""}`} type="submit" value="Silver Meal" onClick={this.handleSM} />
-                        </div>
-                        <div className="col-md-2 mx-auto">
-                            <input className={`btn btn-primary ${this.state.politica==="MCU"?"active":""}`} type="submit" value="MCU" onClick={this.handleMCU} />
-                        </div>
-                    </div>
-                    <div className="card-header ">
                         <h4 className="card-title">Escoge el insumo:</h4>
                     </div>
                     <div>
@@ -432,6 +417,22 @@ class Description extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="card-header ">
+                        <h4 className="card-title">Escoge la heurística:</h4>
+                    </div>
+                    <br />
+                    <div className="row">
+                        <div className="col-md-2 mx-auto">
+                            <input className={`btn btn-primary ${this.state.politica==="PPB"?"active":""}`} type="submit" value="PPB" onClick={this.handlePPB} />
+                        </div>
+                        <div className="col-md-2 mx-auto">
+                            <input className={`btn btn-primary ${this.state.politica==="SM"?"active":""}`} type="submit" value="Silver Meal" onClick={this.handleSM} />
+                        </div>
+                        <div className="col-md-2 mx-auto">
+                            <input className={`btn btn-primary ${this.state.politica==="MCU"?"active":""}`} type="submit" value="MCU" onClick={this.handleMCU} />
+                        </div>
+                    </div>
+                    <hr/>
                     <div className="card-header ">
                         <h4 className="card-title">Resultados:</h4>
                     </div>
